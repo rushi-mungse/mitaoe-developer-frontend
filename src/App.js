@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="bg-white h-[2737px]">
+    <div className="bg-white overflow-y-visible">
       <Navigation />
       <Home />
       <DeveloperClub />
