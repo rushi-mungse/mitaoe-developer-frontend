@@ -31,10 +31,10 @@ const Navigation = () => {
       }
     } catch (error) {
       const { status } = error.request;
-
+      console.log(error);
       if (status === 501)
         return toast.error("Email or Phone already registered.");
-      if (status === 422) return toast.error("Unprocessable Entity ");
+      if (status === 422) return toast.error("Fill form carefully. ");
 
       return toast.error("Something went wrong.");
     }
