@@ -1,7 +1,45 @@
 import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Navigation = () => {
   const [model, setModel] = useState(false);
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    branch: "",
+  });
+  const submit = async () => {
+    if (
+      !userData.name ||
+      !userData.email ||
+      !userData.phone ||
+      !userData.branch
+    )
+      return toast.error("All fields are required.");
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5050/api/fill-user-form",
+        userData
+      );
+      console.log(data);
+      if (data.isRegistered) {
+        setModel(false);
+        return toast.success("Registration successfuly.");
+      }
+    } catch (error) {
+      const { status } = error.request;
+
+      if (status === 501)
+        return toast.error("Email or Phone already registered.");
+      if (status === 422) return toast.error("Unprocessable Entity ");
+
+      return toast.error("Something went wrong.");
+    }
+  };
+
   return (
     <>
       {model ? (
@@ -13,7 +51,7 @@ const Navigation = () => {
           >
             <span className="text-3xl text-red-600">X</span>
           </button>
-          <form action="" className="bg-yellow-500 py-4">
+          <div action="" className="bg-yellow-500 py-4">
             <div className="mb-4 px-2 flex flex-col">
               <label htmlFor="full_name" className="text-xl mr-2">
                 Full Name
@@ -23,6 +61,9 @@ const Navigation = () => {
                 placeholder="Enter your name :"
                 id="full_name"
                 className=" outline-none border-none py-1 px-4 text-lg"
+                onChange={(e) =>
+                  setUserData({ ...userData, name: e.target.value })
+                }
               />
             </div>
             <div className="mb-4 px-2 flex flex-col">
@@ -34,6 +75,9 @@ const Navigation = () => {
                 placeholder="Enter your email :"
                 id="email"
                 className="text-lg outline-none border-none py-1 px-4"
+                onChange={(e) =>
+                  setUserData({ ...userData, email: e.target.value })
+                }
               />
             </div>
             <div className="mb-4 px-2 flex flex-col">
@@ -45,6 +89,9 @@ const Navigation = () => {
                 placeholder="Enter your phone :"
                 id="phone"
                 className="text-lg outline-none border-none py-1 px-4"
+                onChange={(e) =>
+                  setUserData({ ...userData, phone: e.target.value })
+                }
               />
             </div>
             <div className="mb-4 px-2 flex flex-col">
@@ -56,14 +103,20 @@ const Navigation = () => {
                 placeholder="Enter your branch :"
                 id="branch"
                 className="text-lg outline-none border-none py-1 px-4"
+                onChange={(e) =>
+                  setUserData({ ...userData, branch: e.target.value })
+                }
               />
             </div>
-            <button className="flex items-center w-full justify-center ">
+            <button
+              className="flex items-center w-full justify-center "
+              onClick={submit}
+            >
               <span className="text-white bg-yellow-600 px-4 text-xl rounded-full">
                 Sumbit
               </span>
             </button>
-          </form>
+          </div>
         </div>
       ) : (
         <nav className="bg-black h-20 container flex mx-auto items-center justify-between px-8 py-2">
