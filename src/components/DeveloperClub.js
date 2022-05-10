@@ -7,19 +7,19 @@ const DeveloperClub = () => {
       <ul className="mt-4">
         <li className="px-4 py-2">
           <h1 className="mb-2">1.Full-Stack Developer</h1>
-          <img src="/images/full_stack_banner.avif" alt="full-stack" />
+          <img src="./images/full_stack_banner.avif" alt="full-stack" />
         </li>
         <li className=" p-4">
           <h1 className="mb-2">2.Android Developer</h1>
-          <img src="/images/android_banner.svg" alt="android-stack" />
+          <img src="./images/android_banner.svg" alt="android-stack" />
         </li>
         <li className="p-4">
           <h1 className="mb-2">3.Blockchain Developer</h1>
-          <img src="/images/blockchain-banner.png" alt="full-stack" />
+          <img src="./images/blockchain-banner.png" alt="full-stack" />
         </li>
         <li className="p-4">
           <h1 className="mb-2">4.DevOps Developer</h1>
-          <img src="/images/devops_banner.png" alt="devops-stack" />
+          <img src="./images/devops_banner.png" alt="devops-stack" />
         </li>
       </ul>
     </section>

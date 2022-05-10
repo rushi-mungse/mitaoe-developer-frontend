@@ -17,7 +17,7 @@ const Home = () => {
         <ul className="px-6 text-orange-500">
           <li className="flex mb-2">
             <img
-              src="/images/check-mark.png"
+              src="./images/check-mark.png"
               alt="check-mark"
               className="h-6 mr-2"
             />
@@ -25,7 +25,7 @@ const Home = () => {
           </li>
           <li className="flex mb-2">
             <img
-              src="/images/check-mark.png"
+              src="./images/check-mark.png"
               alt="check-mark"
               className="h-6 mr-2"
             />
@@ -41,7 +41,7 @@ const Home = () => {
           </li>
           <li className="flex mb-2">
             <img
-              src="/images/check-mark.png"
+              src="./images/check-mark.png"
               alt="check-mark"
               className="h-6 mr-2"
             />
@@ -49,7 +49,7 @@ const Home = () => {
           </li>
           <li className="flex mb-2">
             <img
-              src="/images/check-mark.png"
+              src="./images/check-mark.png"
               alt="check-mark"
               className="h-6 mr-2"
             />
